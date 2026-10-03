@@ -429,7 +429,7 @@ PLACA ──> SERVIÇOS (com preço) ──> [Salvar no pátio]* ──> RECEBER
 - **RN008** — Total = soma dos itens − desconto. O total nunca pode ser negativo.
 - **RN009** — O desconto pode ser em R$ ou %, é aplicado sobre o total e fica registrado com o usuário que o concedeu.
 - **RN010** — Um atendimento só pode ser finalizado com pelo menos um item e com a soma dos pagamentos igual ao total.
-- **RN011** — Atendimento Aberto pode ser editado livremente. Atendimento Finalizado sem nota autorizada pode ter itens alterados apenas por Administrador (registrado em auditoria). Atendimento com nota Autorizada **não** pode ser alterado.
+- **RN011** — Atendimento Aberto pode ser editado livremente. Atendimento Finalizado **não** tem itens ou valores alterados (o pagamento já foi registrado); para corrigir, o Administrador cancela e abre outro. Os dados do cliente na nota só podem ser corrigidos quando não há nota ativa (para reemitir após rejeição ou cancelamento).
 - **RN012** — Cancelar um atendimento exige motivo e registra usuário e data/hora. O pagamento associado é estornado logicamente (sai do faturamento, aparece em cancelamentos).
 - **RN013** — Cancelar atendimento Finalizado é permitido apenas ao Administrador.
 - **RN014** — Atendimento com NFS-e Autorizada só é cancelado após a NFS-e ser cancelada com sucesso.
@@ -829,7 +829,7 @@ Tudo abaixo deve ser respondido **antes** de iniciar o desenvolvimento da integr
 | Impressão da NFS-e | **MVP** | Via PDF do navegador |
 | Cancelamento de atendimento | **MVP** | Sem isso o caixa não fecha |
 | Estorno | **MVP (lógico)** | Ocorre via cancelamento do atendimento; sem estorno financeiro avulso |
-| Reabertura de atendimento | **Desnecessário** | Substituída por: editar enquanto Aberto; Admin ajustar finalizado sem nota; cancelar e refazer quando há nota |
+| Reabertura de atendimento | **Desnecessário** | Substituída por: editar enquanto Aberto; cancelar e refazer depois de finalizado |
 | Repetir último atendimento | **MVP** | 1 toque para o cliente recorrente — maior ganho de velocidade |
 | Pagamento dividido | **MVP (opcional na tela)** | Comum no balcão; não atrapalha o fluxo padrão |
 | Pagamento pendente (fiado/faturado) | **Futuro (v1.1)** | Real em frotas, mas adiciona contas a receber |
